@@ -6,7 +6,7 @@ import lombok.*;
 //import javax.persistence.Table;
 
 //@Entity
-//@Table(name = "tbl_product")
+//@Table(name = "tbl_student")
 @Setter
 @Getter
 @ToString
