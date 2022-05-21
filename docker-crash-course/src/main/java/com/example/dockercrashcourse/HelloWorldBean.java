@@ -2,14 +2,13 @@ package com.example.dockercrashcourse;
 
 import lombok.*;
 
-@Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Getter
 @ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class HelloWorldBean {
 
     private String message;
-
 }
