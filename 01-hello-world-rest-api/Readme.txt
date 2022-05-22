@@ -102,10 +102,30 @@ ac576d8ec56f   18 minutes ago   ENTRYPOINT ["sh" "-c" "java -jar /hello-worl… 
 robię ponownie builda z dockerfile1:
 docker build -t j4sysiak/hello-world-rest-api:dockerfile1 .
 
+uruchamiamy image:
+docker run -p 8080:8080 j4sysiak/hello-world-rest-api:dockerfile1
+
+-- zatrzymuje jakieś chodzące kontenery:
+docker container ls
 
 
+#docker container stop 125fa475ea22
 
 =================================================================================
 4. Taki automat - korzystamy z pluginu:
 - From Spotify
 - https://github.com/spotify/dockerfile-maven
+
+wystarczy zrobić zmianę w kodzie i potem:  (tworzy się image i robi się build)
+#mvn clean package
+
+-- zatrzymuje jakieś chodzące kontenery:
+docker container ls
+
+teraz wystarczy tylko uruchomić image
+#docker run -p 8080:8080 j4sysiak/hello-world-rest-api:0.0.1-SNAPSHOT
+
+docker container ls
+CONTAINER ID   IMAGE                                          COMMAND                  CREATED          STATUS          PORTS                    NAMES
+7d8f2ad58c6b   j4sysiak/hello-world-rest-api:0.0.1-SNAPSHOT   "sh -c 'java -jar /h…"   49 seconds ago   Up 46 seconds   0.0.0.0:8080->8080/tcp   eloquent_jennings
+
