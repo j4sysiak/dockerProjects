@@ -74,10 +74,9 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 uruchamiamy image:
 docker run -p 8080:8080 j4sysiak/hello-world-rest-api:dockerfile1
 
-=================================================================================
-4. Taki automat - korzystamy z pluginu:
-- From Spotify
-- https://github.com/spotify/dockerfile-maven
+4. robimy jakąś modyfikację w kodzie aplikacji
+i potem:
+#mvn clean package
 
 -- zatrzymuje jakieś chodzące kontenery:
 docker container ls
@@ -100,3 +99,13 @@ ac576d8ec56f   18 minutes ago   ENTRYPOINT ["sh" "-c" "java -jar /hello-worl… 
 <missing>      3 years ago      /bin/sh -c #(nop) ADD file:a86aea1f3a7d68f6a…   5.53MB
 
 
+robię ponownie builda z dockerfile1:
+docker build -t j4sysiak/hello-world-rest-api:dockerfile1 .
+
+
+
+
+=================================================================================
+4. Taki automat - korzystamy z pluginu:
+- From Spotify
+- https://github.com/spotify/dockerfile-maven
