@@ -1,25 +1,43 @@
 uruchamiaj w gitBaszu:  w lokalizacji projektu: ~/Documents/JAVA/SpringBoot/dockerProjects/01-hello-world-rest-api (master)
 ---------------------------------------------------------------------
-1.
-tworzymy Container:
-docker container exec crazy_wu ls /tmp
+1. Tworzymy Container - <d> detached    <it> - interactive shell:
+docker run -dit openjdk:8-jdk-alpine
 
-wrzucamy fizyczny plik jar do Contenera:
-docker container cp target/hello-world-rest-api.jar crazy_wu:/tmp
+sprawdzamy images:
+docker images
 
-tworzymy image w Contenerze:
-docker container commit crazy_wu j4sysiak/hello-world-rest-api:manual1
-
-Uruchamiamy image:
-docker run j4sysiak/hello-world-rest-api:manual1
-
-sprawdzamy:
+sprawdzamy jakie Containers pracują:
 docker container ls
 
-2. inny sposób uruchomienia:
-docker container commit --change='CMD ["java","-jar","/tmp/hello-world-rest-api.jar"]' crazy_wu j4sysiak/hello-world-rest-api:manual3
-docker run -p 8080:8080 j4sysiak/hello-world-rest-api:manual3
+listowanie co siężńą€ęąąłó€tworzymy folder /tmp w kontenerze:
+docker container exec intelligent_zhukovsky ls /tmp
 
+wrzucamy fizyczny plik jar do Contenera do katalogu /tmp:
+docker container cp target/hello-world-rest-api.jar intelligent_zhukovsky:/tmp
+
+tworzymy image w Contenerze:
+docker container commit intelligent_zhukovsky j4sysiak/hello-world-rest-api:manual1
+
+usuwanie Image:
+docker rmi <your-image-id>
+
+Uruchamiamy image:  - ale musimy attach do niego coś jeszcze
+docker run j4sysiak/hello-world-rest-api:manual1
+
+sprawdzamy:  (na tym etapie ten image manual nie będzie diałać)
+docker container ls
+
+2. prawidłowe utworzenie obrazu
+docker container commit --change='CMD ["java","-jar","/tmp/hello-world-rest-api.jar"]' intelligent_zhukovsky j4sysiak/hello-world-rest-api:manual2
+
+2b.  i uruchomienie image w kontenerze:
+docker run -p 8080:8080 j4sysiak/hello-world-rest-api:manual2
+
+2c. Zatrzymanie:  Ctrl+Z  - lub z klienta wyłączamy image
+
+
+
+===============================================================================
 3. uruchomienie przy pomocy pliku Dockerfile:
 
 dodajemy plik Dockerfile:
@@ -37,3 +55,9 @@ $ docker build -t j4sysiak/hello-world-rest-api:dockerfile1 .
 
 uruchamiamy image:
 docker run -p 8080:8080 j4sysiak/hello-world-rest-api:dockerfile1
+
+========================================================
+4. Taki automat - korzystamy z pluginu:
+- From Spotify
+- https://github.com/spotify/dockerfile-maven
+
