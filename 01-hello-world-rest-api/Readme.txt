@@ -176,3 +176,15 @@ COPY ${DEPENDENCY}/BOOT-INF/classes /app
 ENTRYPOINT ["java","-cp","app:app/lib/*","com.in28minutes.rest.webservices.restfulwebservices.RestfulWebServicesApplication"]
 ```
 
+wystarczy zrobić zmianę w kodzie i potem:  (tworzy się image i robi się build)
+#mvn clean package
+
+-- zatrzymuje jakieś chodzące kontenery:
+docker container ls
+#docker container stop 4769737cd53b
+
+robię ponownie builda z dockerfile1:
+docker build -t j4sysiak/hello-world-rest-api:dockerfile1 .
+
+uruchamiamy image:
+docker run -p 8080:8080 j4sysiak/hello-world-rest-api:dockerfile1

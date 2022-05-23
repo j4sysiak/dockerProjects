@@ -9,19 +9,19 @@ public class HelloWorldController {
 
 	@GetMapping(path = "/hello-world")
 	public String helloWorld() {
-		return "Hello World v8";
+		return "Hello World v9";
 	}
 
 	@GetMapping(path = "/hello-world-bean")
 	public HelloWorldBean helloWorldBean() {
 		// throw new RuntimeException("Some Error has Happened! Contact Support at
 		// ***-***");
-		return new HelloWorldBean("Hello World v8");
+		return new HelloWorldBean("Hello World v9");
 	}
 
 	/// hello-world/path-variable/in28minutes
 	@GetMapping(path = "/hello-world/path-variable/{name}")
 	public HelloWorldBean helloWorldPathVariable(@PathVariable String name) {
-		return new HelloWorldBean(String.format("Hello World v8, %s", name));
+		return new HelloWorldBean(String.format("Hello World v9, %s", name));
 	}
 }
