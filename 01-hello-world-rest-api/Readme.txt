@@ -242,3 +242,5 @@ uruchamiamy image:
 #docker run -p 8080:8080 01-hello-world-rest-api:0.0.1-SNAPSHOT
 
 
+====================================================================
+7. Using Dockerfile Mavin plugin.
