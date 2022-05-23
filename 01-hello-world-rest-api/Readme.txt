@@ -133,7 +133,7 @@ d93cd7e6eb13   j4sysiak/hello-world-rest-api:0.0.1-SNAPSHOT   "sh -c 'java -jar 
 
 
 =============================================================================
-5. Lepszy automatically
+5. Lepszy automatically  - cache całą aplikację
 
 dodajemy do pom.xml
 
@@ -188,3 +188,57 @@ docker build -t j4sysiak/hello-world-rest-api:dockerfile1 .
 
 uruchamiamy image:
 docker run -p 8080:8080 j4sysiak/hello-world-rest-api:dockerfile1
+
+
+=====================================
+6. JIB
+
+usuwam plik Dockfile
+dodaje do POM
+
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>1.6.1</version>
+				<configuration>
+					<container>
+						<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+					</container>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>dockerBuild</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
+wystarczy zrobić zmianę w kodzie i potem:  (tworzy się image i robi się build)
+#mvn clean package
+
+Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/dockerProjects/01-hello-world-rest-api (master)
+$ docker images
+REPOSITORY                      TAG              IMAGE ID       CREATED          SIZE
+01-hello-world-rest-api         0.0.1-SNAPSHOT   ccf9f10bc4a9   7 minutes ago    147MB
+
+
+patrzę na historię:
+docker history 01-hello-world-rest-api:0.0.1-SNAPSHOT
+
+IMAGE          CREATED         CREATED BY               SIZE      COMMENT
+ccf9f10bc4a9   8 minutes ago   jib-maven-plugin:1.6.1   3.31kB    classes
+<missing>      8 minutes ago   jib-maven-plugin:1.6.1   43B       resources
+<missing>      8 minutes ago   jib-maven-plugin:1.6.1   16.9MB    dependencies
+
+
+-- zatrzymuje jakieś chodzące kontenery:
+docker container ls
+#docker container stop 4769737cd53b
+
+uruchamiamy image:
+#docker run -p 8080:8080 01-hello-world-rest-api:0.0.1-SNAPSHOT
+
+
