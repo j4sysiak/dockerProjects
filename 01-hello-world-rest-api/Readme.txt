@@ -243,4 +243,45 @@ uruchamiamy image:
 
 
 ====================================================================
-7. Using Dockerfile Mavin plugin.
+7. Using  Using XML Configuration: io.fabric8/docker-maven-plugin
+
+
+<!-- To build the image - "mvn clean package" -->
+<!-- TAG - 01-hello-world-rest-api:latest -->
+<!-- docker run -p 8080:8080 01-hello-world-rest-api:latest -->
+<plugin>
+   <groupId>io.fabric8</groupId>
+   <artifactId>docker-maven-plugin</artifactId>
+   <version>0.26.0</version>
+   <extensions>true</extensions>
+   <configuration>
+      <verbose>true</verbose>
+      <images>
+         <image>
+            <name>${project.artifactId}</name>
+            <build>
+               <from>java:8-jdk-alpine</from>
+               <entryPoint>
+                  <exec>
+                     <args>java</args>
+                     <args>-jar</args>
+                     <args>/maven/${project.build.finalName}.jar</args>
+                  </exec>
+               </entryPoint>
+               <assembly>
+                  <descriptorRef>artifact</descriptorRef>
+               </assembly>
+            </build>
+         </image>
+      </images>
+   </configuration>
+   <executions>
+	<execution>
+		<id>docker-build</id>
+		<phase>package</phase>
+		<goals>
+			<goal>build</goal>
+		</goals>
+	</execution>
+   </executions>
+</plugin>
