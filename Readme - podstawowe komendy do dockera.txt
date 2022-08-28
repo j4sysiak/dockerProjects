@@ -111,6 +111,12 @@ C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\01-hello-world-rest-api>
 
 
 
+C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\01-hello-world-rest-api>docker container ls
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                              NAMES
+542ebc35bd77   c959efd40db9   "/bin/sh -c 'java -j…"   5 minutes ago   Up 5 minutes   8000/tcp, 0.0.0.0:8000->8080/tcp   thirsty_mccarthy
+
+
+
 odpalenie:
 http://localhost:8000/hello-world
 
@@ -131,12 +137,7 @@ $ docker build -t j4sysiak/hello-world-rest-api:dockerfile1 .
 #7 DONE 0.4s
 
     możemy też uruchomić:  docker run -p j4sysiak/hello-world-rest-api:dockerfile1
-	
-	
-	(  lub
-	docker build . -f Dockerfile1 -t helloworld
-	docker run --rm -it helloworld
-	)
+ 
 
 sprawdzamy:  (na tym etapie ten image manual nie będzie diałać)
 #docker container ls
