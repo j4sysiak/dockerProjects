@@ -45,6 +45,76 @@ docker container stop [id]
 
 
 ===============================================================================
+Bykowski
+2.  https://www.youtube.com/watch?v=cqIu1h8FkMw&list=PLUtcRmGoaP24JStlolGq1wqjCC0YbMHKC
+
+w cmd:
+
+C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\01-hello-world-rest-api>docker build -f Dockerfile -t stream:v2 .
+[+] Building 4.3s (7/7) FINISHED
+ => [internal] load build definition from Dockerfile                                                                                                                0.7s
+ => => transferring dockerfile: 156B                                                                                                                                0.0s
+ => [internal] load .dockerignore                                                                                                                                   0.9s
+ => => transferring context: 2B                                                                                                                                     0.0s
+ => [internal] load metadata for docker.io/library/openjdk:8-jdk-alpine                                                                                             0.0s
+ => [internal] load build context                                                                                                                                   0.4s
+ => => transferring context: 81B                                                                                                                                    0.0s
+ => CACHED [1/2] FROM docker.io/library/openjdk:8-jdk-alpine                                                                                                        0.0s
+ => [2/2] ADD target/hello-world-rest-api.jar .                                                                                                                     1.5s
+ => exporting to image                                                                                                                                              0.8s
+ => => exporting layers                                                                                                                                             0.5s
+ => => writing image sha256:c959efd40db91f9f2cac4ccd40eac543ee595f8af0486ca27c9bd36a19c63210                                                                        0.1s
+ => => naming to docker.io/library/stream:v2                                                                                                                        0.1s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+
+
+C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\01-hello-world-rest-api>docker images
+REPOSITORY                      TAG              IMAGE ID       CREATED          SIZE
+stream                          v2               c959efd40db9   2 minutes ago    122MB
+helloworld                      latest           bc88cec09f98   22 minutes ago   122MB
+01-hello-world-rest-api         0.0.1-SNAPSHOT   f60a46f853da   47 minutes ago   147MB
+<none>                          <none>           139d0c9a9efe   51 minutes ago   147MB
+ubuntu                          latest           df5de72bdb3b   3 weeks ago      77.8MB
+grafana/grafana                 latest           c4b778290339   2 months ago     292MB
+prom/prometheus                 latest           0c33456baaaa   2 months ago     211MB
+<none>                          <none>           ccf9f10bc4a9   3 months ago     147MB
+<none>                          <none>           e0eae122aa83   3 months ago     147MB
+j4sysiak/hello-world-rest-api   dockerfile1      acfc108c7b3e   3 months ago     122MB
+<none>                          <none>           dd8960418ca8   3 months ago     122MB
+j4sysiak/hello-world-rest-api   0.0.1-SNAPSHOT   bebb537d4e70   3 months ago     122MB
+<none>                          <none>           18ea67d1665f   3 months ago     122MB
+<none>                          <none>           e3f4ddf615a2   3 months ago     122MB
+<none>                          <none>           ac576d8ec56f   3 months ago     122MB
+j4sysiak/hello-world-rest-api   manual2          2b89973d5761   3 months ago     122MB
+j4sysiak/hello-world-rest-api   manual1          404033c6e81a   3 months ago     122MB
+nginx                           latest           de2543b9436b   3 months ago     142MB
+hello-world                     latest           feb5d9fea6a5   11 months ago    13.3kB
+openjdk                         8-jdk-alpine     a3562aa0b991   3 years ago      105MB
+
+
+
+
+C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\01-hello-world-rest-api>docker run -p 8000:8080 c959efd40db9
+2022-08-28 15:37:13.929 DEBUG 1 --- [main] .c.l.ClasspathLoggingApplicationListener : Application started with classpath:
+/.../
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.7.RELEASE)
+/.../
+2022-08-28 15:37:20.213  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-08-28 15:37:20.224  INFO 1 --- [           main] c.i.r.w.r.RestfulWebServicesApplication  : Started RestfulWebServicesApplication in 7.367 seconds (JVM running for 8.29)
+
+
+
+odpalenie:
+http://localhost:8000/hello-world
+
+=================================================================================
 3. uruchomienie przy pomocy pliku Dockerfile:
 
 dodajemy plik Dockerfile:
@@ -61,6 +131,12 @@ $ docker build -t j4sysiak/hello-world-rest-api:dockerfile1 .
 #7 DONE 0.4s
 
     możemy też uruchomić:  docker run -p j4sysiak/hello-world-rest-api:dockerfile1
+	
+	
+	(  lub
+	docker build . -f Dockerfile1 -t helloworld
+	docker run --rm -it helloworld
+	)
 
 sprawdzamy:  (na tym etapie ten image manual nie będzie diałać)
 #docker container ls
