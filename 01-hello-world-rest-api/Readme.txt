@@ -103,7 +103,9 @@ C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\01-hello-world-rest-api>
 2022-08-28 15:37:20.213  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
 2022-08-28 15:37:20.224  INFO 1 --- [           main] c.i.r.w.r.RestfulWebServicesApplication  : Started RestfulWebServicesApplication in 7.367 seconds (JVM running for 8.29)
 
-
+#docker container ls
+CONTAINER ID   IMAGE                                   COMMAND                  CREATED       STATUS         PORTS                    NAMES
+3820647876f5   j4sysiak/hello-world-rest-api:manual2   "java -jar /tmp/hell…"   3 hours ago   Up 4 minutes   0.0.0.0:8080->8080/tcp   naughty_hugle
 
 odpalenie:
 http://localhost:8000/hello-world
