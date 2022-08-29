@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class StudentController {
 
-    @GetMapping("/index")
+    //  http://localhost:8080/index
+    @GetMapping("/index1")
     public String GetForm(Model model) {
         model.addAttribute("Student", new Student());
         return "index";
     }
 
+    //  http://localhost:8080/registration
     @PostMapping("/registration")
     public String PostForm(@ModelAttribute Student student, BindingResult result, Model model)  {
         model.addAttribute("Student", student);
