@@ -1,0 +1,27 @@
+version: '3'
+services:
+ api:
+   build: ./springboot-api-docker
+   ports:
+     - "9090:9090"
+   depends_on:
+     - database
+ client:
+   build: ./springboot-client-docker
+   ports:
+     - "12121:12121"
+  depends_on:
+    - api
+ database:
+   container_name: 'mysql'
+   image: mysql
+   environment:
+     MYSQL_ROOT_PASSWORD: Warszawa5584
+     MYSQL_USER: root
+     MYSQL_DATABASE: animalsdb
+  ports:
+       - "3306:3306"
+
+
+
+
