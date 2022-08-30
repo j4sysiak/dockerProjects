@@ -25,6 +25,5 @@ public class Animal {
         this.name = name;
     }
     // musi być konstruktor bezparametrowy żeby rest-api chodziło
-    // muszą być też settery i gettery do wszystkich pól
     public Animal() {}
 }
