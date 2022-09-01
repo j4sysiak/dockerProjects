@@ -29,5 +29,5 @@ public class Api {
     @PostMapping("/animals")
     public boolean addAnimals(@RequestBody Animal animal) {
         return animals.add(animal);
-}
+    }
 }

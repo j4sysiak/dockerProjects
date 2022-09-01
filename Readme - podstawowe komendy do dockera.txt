@@ -328,3 +328,37 @@ uruchamiamy image:
 
 ====================================================================
 7. Using Dockerfile Mavin plugin.
+
+
+
+
+
+===================================  docker compose =================
+https://www.youtube.com/watch?v=6c4-XJkDqC0&t=987s
+
+konfiguracja w pliku: docker-compose.yml
+
+version: '3'
+services:
+  api:
+    build: ./demo8
+    ports:
+    - "9091:9091"
+  database:
+   container_name: 'database'
+   image: mysql
+   environment:
+     MYSQL_ROOT_PASSWORD: Warszawa5584
+     MYSQL_PASSWORD: jacek
+     MYSQL_DATABASE: animalsdb
+     MYSQL_USER: jacek
+   ports:
+   - "3307:3306"
+
+
+--------
+
+#docker-compose up
+   
+   
+   

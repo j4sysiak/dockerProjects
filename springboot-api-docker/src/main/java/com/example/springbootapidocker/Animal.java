@@ -2,12 +2,9 @@ package com.example.springbootapidocker;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-@Entity
+
+//@Entity
 @Setter
 @Getter
 @Builder
@@ -15,8 +12,8 @@ import javax.persistence.Id;
 @ToString
 public class Animal {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -26,5 +23,18 @@ public class Animal {
     }
     // musi być konstruktor bezparametrowy żeby rest-api chodziło
     // muszą być też settery i gettery do wszystkich pól
-    public Animal() {}
+     public Animal() {}
+
+//
+//
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 }
