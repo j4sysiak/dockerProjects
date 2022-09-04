@@ -168,7 +168,178 @@ springboot-app_1  | 2022-09-03 19:40:40.191  INFO 1 --- [nio-8080-exec-3] o.s.we
 
 
 
-#$ docker ps
+$ docker ps
+CONTAINER ID   IMAGE            COMMAND               CREATED       STATUS              PORTS                    NAMES
+942b7a953643   springboot-app   "java -jar app.jar"   9 hours ago   Up About a minute   0.0.0.0:9090->8080/tcp   spring-app
+
  
 
+(usuwa kontenery)
+$ docker-compose down
+Stopping spring-app ... done
+Removing spring-app ... done
+Removing network springboot-docker-compose_default
+
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+
+version: '3'
+services:
+  springboot-app:
+    # container_name: spring-app
+    image: springboot-app
+    build: .
+    ports:
+      - 9000-9999:8080
+
+
+#$ docker-compose up -d --scale springboot-app=5    (tworzy 5 instancji kontenerów springboot-app)
+
+$ docker ps
+CONTAINER ID   IMAGE            COMMAND               CREATED         STATUS         PORTS                    NAMES
+f618f9515a6d   springboot-app   "java -jar app.jar"   2 minutes ago   Up 2 minutes   0.0.0.0:9006->8080/tcp   springboot-docker-compose_springboot-app_6
+c947673302d2   springboot-app   "java -jar app.jar"   4 minutes ago   Up 3 minutes   0.0.0.0:9005->8080/tcp   springboot-docker-compose_springboot-app_5
+7f9eefa92bf5   springboot-app   "java -jar app.jar"   4 minutes ago   Up 4 minutes   0.0.0.0:9004->8080/tcp   springboot-docker-compose_springboot-app_4
+89ce3ed93b02   springboot-app   "java -jar app.jar"   5 minutes ago   Up 4 minutes   0.0.0.0:9003->8080/tcp   springboot-docker-compose_springboot-app_3
+fd2eea3b3300   springboot-app   "java -jar app.jar"   5 minutes ago   Up 5 minutes   0.0.0.0:9002->8080/tcp   springboot-docker-compose_springboot-app_2
+e1f1d3a4fb6f   springboot-app   "java -jar app.jar"   6 minutes ago   Up 5 minutes   0.0.0.0:9001->8080/tcp   springboot-docker-compose_springboot-app_1
+
+
+
+
+
+$ docker-compose down
+
+version: '3'
+services:
+  springboot-app:
+    container_name: spring-app
+    image: springboot-app
+    build: .
+    ports:
+      - 9000:8080
+
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: root
+	  
+	  
+	  
+#$ docker-compose up
+
+UWAGA: musimy trochę poczekać bo baza mysqldb2 się długo może ładować
+
+/.../
+mysqldb2          | 2022-09-04T05:12:09.622664Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: /var/run/mysqld/mysqlx.sock
+mysqldb2          | 2022-09-04T05:12:09.623080Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.30'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Se
+rver - GPL.
+mysqldb2          | 2022-09-04 05:12:09+00:00 [Note] [Entrypoint]: Temporary server started.
+mysqldb2          | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+mysqldb2          | 2022-09-04T05:13:30.822106Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+mysqldb2          | 2022-09-04T05:13:30.822317Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.30'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community
+ Server - GPL.
+
+
+- włączamy aplikację do bazy (tj. aplikacja musi korzystać z bazy)
+
+1. dodajemy w pom.xml
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+
+2. application-properitas:
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/test
+spring.datasource.username=${MYSQL_USER:laravel}
+spring.datasource.password=${MYSQL_PASSWORD:laravel}
+
+3. to wywalamy z Environment variables w Intelij: MYSQL_USER=root;MYSQL_PASSWORD=root;MYSQL_PORT=3307
+
+4. modyfikujemy plik yml:
+
+version: '3'
+services:
+  springboot-app:
+    # container_name: spring-app
+    image: springboot-app
+    restart: always
+    build: .
+    ports:
+      - 9000:8080
+    environment:
+      MYSQL_HOST: mysqldb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_PORT: 3306
+
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: root
+
+
+	  
+	  
+4. usuwamy kontener spring-app, od nowa budujemy kontener:
 #$ docker-compose down
+#$ docker-compose up
+
+
+i UWAGA, po to daliśmy w ymlu taga: restart, żeby spring-app ciągle się restartował, aż wstanie baza:
+
+2022-09-04T05:58:13.067019Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+2022-09-04T05:58:13.067179Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.30'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+
+i teraz dopiero spring-app wstanie:
+
+springboot-app_1  | 2022-09-04 05:58:22.525  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+springboot-app_1  | 2022-09-04 05:58:22.547  INFO 1 --- [           main] c.e.s.SpringbootDockerComposeApplication : Started SpringbootDockerComposeApplication in 8.264 seconds (JVM running for 9.945)
+
+
+
+tworzy się baza: test   pod 3307
+można odpalić aplikację localhost:9000
+
+
+dodajemy klasę Product do Springa
+#$ docker-compose up --build 
+
+po kilku minutach (restarty):
+
+$ docker ps
+CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                               NAMES
+666103878f66   springboot-app   "java -jar app.jar"      12 minutes ago   Up 5 minutes    0.0.0.0:9000->8080/tcp              springboot-docker-compose_springboot-app_1
+3f512b450471   mysql            "docker-entrypoint.s…"   12 minutes ago   Up 12 minutes   33060/tcp, 0.0.0.0:3307->3306/tcp   mysqldb
+
+
+powstanie baza test i tabela Product
+
+select * from test.product;
+
+
+#$ docker-compose down
+#$ docker-compose up -d
+
+lub
+ 
+#$ docker-compose restart
+
+
+
