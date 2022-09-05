@@ -119,6 +119,31 @@ SELECT count(*) FROM samochody;  - nie tracimy wartości z bazy danych
 
  
 
+===================================================
+https://www.youtube.com/watch?v=329YT1wPyOo&t=1246s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
