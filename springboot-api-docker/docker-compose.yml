@@ -1,0 +1,44 @@
+version: '3.1'
+services:
+#service 1: definition of mysql
+  db:
+    image: mysql
+    container_name: mysql-db5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: animal
+    ports:
+      - "3307:3306"
+    volumes:
+      - C:/tmp/04-Data/MySQLData/mysql-db5:/var/lib/mysql
+
+#service 2: definition of phpMyAdmin
+#  phpmyadmin:
+#    image: phpmyadmin/phpmyadmin:latest
+#    container_name: my-php-myadmin
+#    ports:
+#      - "8081:80"
+#    restart: always
+#    depends_on:
+#      - db
+#    environment:
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+
+#service 3: Springboot aplikacja
+  api:
+    image: api-service
+    container_name: api-service-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+    restart: always
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db5:3306/animal?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root

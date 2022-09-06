@@ -23,7 +23,7 @@ public class AnimalClient {
                 HttpEntity.EMPTY,
                 Animal[].class); */
 				
-		/*  uruchomienie dockerowe */		
+		/*  uruchomienie dockerowe */
 		ResponseEntity<Animal[]> exchange = restTemplate.exchange("http://api:9090/animals",
                 HttpMethod.GET,
                 HttpEntity.EMPTY,

@@ -1,29 +1,45 @@
 package com.example.springbootclientdocker;
 
-import lombok.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.Objects;
 
-@Entity
-@Setter
+//@Data
 @Getter
-@Builder
-@AllArgsConstructor
-@ToString
+@Setter
 public class Animal {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
+    private Long id;
     private String name;
 
-    public Animal(String name) {
-        this.name = name;
+    Animal(){}
+    Animal(String name) {
+        this.name=name;
     }
-    // musi być konstruktor bezparametrowy żeby rest-api chodziło
-    public Animal() {}
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Animal))
+            return false;
+        Animal animal = (Animal) o;
+        return Objects.equals(this.id, animal.id) && Objects.equals(this.name, animal.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id, this.name);
+    }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "id=" + id +
+                ", name='" + name +
+                '}';
+    }
 }

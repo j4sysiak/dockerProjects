@@ -5,7 +5,7 @@ Tworzenie obrazu bazy danych mysql - Ważne przejdź to jak montujesz bazę po r
 podłączenie się do bazy:
 #docker exec -it my-mysql /bin/bash
 
-bash-4.4# mysql -uroot -p -A
+bash-4.4# 50/50
 Enter password: 
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 35
@@ -118,6 +118,18 @@ d4712a93f8b9   host         host      local
 8bae8e4c0a6d   none         null      local
 e04c6df27835   spring-net   bridge    local
 
+#docker network inspect spring-net
+
+ "Containers": {
+            "3c8a7fb357b347c27489b0bf9fec2d271b31be3fd956d305cca4ba7e24911d69": {
+                "Name": "mysqldb",
+                "EndpointID": "3407d680b3b170249238c4b377cd9bfecac40f978e2ed89453e1994ef222ece5",
+                "MacAddress": "02:42:ac:13:00:04",
+                "IPv4Address": "172.19.0.4/16",
+                "IPv6Address": ""
+            }
+        }
+		
 
 łaczymy nasz nowy network spring-net z kontenerem mysqldb:
 #docker network connect spring-net mysqldb

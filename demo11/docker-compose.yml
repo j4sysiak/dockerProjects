@@ -1,7 +1,7 @@
 version: '3.1'
 services:
 #service 1: definition of mysql
-  my-sql:
+  db:
     image: mysql
     container_name: mysql-db4
     restart: always
@@ -21,7 +21,7 @@ services:
       - "8081:80"
     restart: always
     depends_on:
-      - my-sql
+      - db
     environment:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
@@ -36,7 +36,7 @@ services:
       - "9000:8080"
     restart: always
     depends_on:
-      - my-sql
+      - db
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db4:3306/mydb?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
