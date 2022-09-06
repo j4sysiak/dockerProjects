@@ -3,15 +3,15 @@ services:
 #service 1: definition of mysql
   db:
     image: mysql
-    container_name: mysql-db2
+    container_name: mysql-db3
     restart: always
     environment:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: easyeat
+          MYSQL_DATABASE: mydb
     ports:
       - "3307:3306"
     volumes:
-      - C:/tmp/02-Data/MySQLData/mysql-db2:/var/lib/mysql
+      - C:/tmp/03-Data/MySQLData/mysql-db3:/var/lib/mysql
 
 #service 2: definition of phpMyAdmin
   phpmyadmin:
@@ -27,9 +27,9 @@ services:
               SPRING_DATASOURCE_PASSWORD: root
 
 #service 3: Spring-Boot application
-  easyeatservice:
-    image: easy-eat-service
-    container_name: easy-eat-service-app
+  dbservice:
+    image: dbservice
+    container_name: dbservice-app
     build:
       context: .
       dockerfile: Dockerfile
@@ -39,6 +39,6 @@ services:
     depends_on:
       - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db2:3306/easyeat?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db3:3306/mydb?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
