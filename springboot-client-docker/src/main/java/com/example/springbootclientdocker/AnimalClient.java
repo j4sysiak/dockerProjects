@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class AnimalClient {
 
-    //end point
+    //end point 1
     @GetMapping("/showForGui")
     @ResponseBody
     public Animal[] get() {
@@ -31,6 +31,13 @@ public class AnimalClient {
 
         Animal[] body = exchange.getBody();
         return body;
+    }
+
+    //end point 2
+    @GetMapping("/showtest")
+    @ResponseBody
+    public String showSth() {
+        return "showtest";
     }
 
 }

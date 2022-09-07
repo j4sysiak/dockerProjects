@@ -27,14 +27,14 @@ services:
 #      SPRING_DATASOURCE_PASSWORD: root
 
 #service 3: definition Springboot aplikacja
-  clientservice:
-    image: client-service
-    container_name: client-service-app
+  client:
+    image: client
+    container_name: client
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "12121:12121"
+#    ports:
+#      - "12121:12121"
 #    restart: always
 #    depends_on:
 #      - db
