@@ -17,17 +17,17 @@ public class AnimalClient {
     @ResponseBody
     public Animal[] get() {
         RestTemplate restTemplate = new RestTemplate();
-		/*  uruchomienie lokalne
-        ResponseEntity<Animal[]> exchange = restTemplate.exchange("http://localhost:9090/animals",
-                HttpMethod.GET,
-                HttpEntity.EMPTY,
-                Animal[].class); */
-				
-		/*  uruchomienie dockerowe */
-		ResponseEntity<Animal[]> exchange = restTemplate.exchange("http://api:9090/animals",
+		/*  uruchomienie lokalne */
+        ResponseEntity<Animal[]> exchange = restTemplate.exchange("http://localhost:10101/animals",
                 HttpMethod.GET,
                 HttpEntity.EMPTY,
                 Animal[].class);
+				
+		/*  uruchomienie dockerowe
+		ResponseEntity<Animal[]> exchange = restTemplate.exchange("http://api:10101/animals",
+                HttpMethod.GET,
+                HttpEntity.EMPTY,
+                Animal[].class); */
 
         Animal[] body = exchange.getBody();
         return body;

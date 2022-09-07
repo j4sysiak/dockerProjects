@@ -1,8 +1,7 @@
 https://www.youtube.com/watch?v=6c4-XJkDqC0&t=987s
 
-
+---  odpalenie z Dockerfile ---
 #docker build -t api .
-
 #docker run -p 9090:9090 --name api api
 
 /.../

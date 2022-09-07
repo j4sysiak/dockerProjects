@@ -34,7 +34,7 @@ services:
       context: .
       dockerfile: Dockerfile
 #    ports:
-#      - "9090:9090"
+#      - "10101:10101"
 #    restart: always
 #    depends_on:
 #      - db
