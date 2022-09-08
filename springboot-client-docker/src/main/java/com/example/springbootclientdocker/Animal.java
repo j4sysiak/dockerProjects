@@ -1,22 +1,12 @@
 package com.example.springbootclientdocker;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Objects;
-
-//@Data
-//@Getter
-//@Setter
 public class Animal {
-
     private Long id;
     private String name;
 
-    Animal(){}
-    Animal(String name) {
-        this.name=name;
+    public Animal() {}
+    public Animal(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -34,8 +24,9 @@ public class Animal {
     public void setName(String name) {
         this.name = name;
     }
+}
 
-    //    @Override
+//    @Override
 //    public boolean equals(java.lang.Object o) {
 //        if (this == o)
 //            return true;
@@ -57,4 +48,3 @@ public class Animal {
 //                ", name='" + name +
 //                '}';
 //    }
-}

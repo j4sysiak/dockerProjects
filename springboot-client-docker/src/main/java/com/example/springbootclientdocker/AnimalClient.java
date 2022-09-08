@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 //@Controller
-@RestController
+@RestController  //żeby wyświetlić dane w get() musi być RestController a nie Controller
 public class AnimalClient {
 
     //end point 1
@@ -17,17 +17,17 @@ public class AnimalClient {
     @ResponseBody
     public Animal[] get() {
         RestTemplate restTemplate = new RestTemplate();
-		/*  uruchomienie lokalne */
+		/*  uruchomienie lokalne
         ResponseEntity<Animal[]> exchange = restTemplate.exchange("http://localhost:10101/animals",
                 HttpMethod.GET,
                 HttpEntity.EMPTY,
-                Animal[].class);
+                Animal[].class);*/
 				
-		/*  uruchomienie dockerowe
+		/*  uruchomienie dockerowe */
 		ResponseEntity<Animal[]> exchange = restTemplate.exchange("http://api:10101/animals",
                 HttpMethod.GET,
                 HttpEntity.EMPTY,
-                Animal[].class); */
+                Animal[].class);
 
         Animal[] body = exchange.getBody();
         return body;
@@ -41,3 +41,33 @@ public class AnimalClient {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

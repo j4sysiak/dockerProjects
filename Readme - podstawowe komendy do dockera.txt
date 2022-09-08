@@ -1,3 +1,7 @@
+https://bykowski.pl/docker-lista-komand-twoja-podreczna-sciaga/
+
+----------------------------------------------------------------
+
 Tworzenie obrazu bazy danych mysql - Ważne przejdź to jak montujesz bazę po raz pierwszy:
 
 #docker run -p 3307:3306 --name my-mysql -e MYSQL_ROOT_PASSWORD=Warszawa5584 -d mysql/mysql-server:8.0.30
@@ -5,7 +9,7 @@ Tworzenie obrazu bazy danych mysql - Ważne przejdź to jak montujesz bazę po r
 podłączenie się do bazy:
 #docker exec -it my-mysql /bin/bash
 
-bash-4.4# 50/50
+bash-4.4# mysql -u root -p
 Enter password: 
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 35
