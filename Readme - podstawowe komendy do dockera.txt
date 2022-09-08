@@ -1,5 +1,81 @@
 https://bykowski.pl/docker-lista-komand-twoja-podreczna-sciaga/
 
+Kontenery
+Użyj:
+
+1
+docker container nazwa_komendy nazwa_kontenera
+komendy:
+
+start – uruchom istniejący kontener.
+run – utwórz nowy kontener i uruchom go.
+ls – wyświetla listę działających kontenerów.
+inspect – zobacz informacje o kontenerze.
+logs – pokaż logi kontenera.
+stop – zatrzymaj działanie kontenera.
+kill – gwałtownie zatrzymuje główny proces w kontenerze.
+rm – usuń zatrzymany kontener.
+Obrazy
+Użyj:
+
+1
+docker image nazwa_komendy nazwa_obrazu
+komendy:
+
+build – zbuduj obraz.
+push – wrzuć obraz do zdalnego repozytorium.
+history – zobacz informacje o historii obrazu.
+inspect – zobacz informacje o obrazie i jego warstwach.
+rm – usuń obraz.
+Budowanie
+Budowanie obrazu na podstawie Dockerfile znajdującym się bieżącym katalogu:
+
+1
+docker build -t myimage:1.0 .
+Lista wszystkich obrazów:
+
+1
+docker image ls
+Uruchamianie
+Uruchomienie kontenera „web” w wersji Alpine 3.9 z wystawieniem zewnętrznego portu 5000 przy wewnętrznym porcie 80:
+
+1
+docker container run --name web -p 5000:80 alpine:3.9
+Zatrzymanie uruchomionego kontenera:
+
+1
+docker container stop web
+Natychmiastowe (zabicie) zatrzymanie kontenera:
+
+1
+docker container kill web
+Lista sieci:
+
+1
+docker network ls
+Usuwanie
+Usuwanie pojedynczego obrazu:
+
+1
+docker image rm alpine:3.4
+Usuwanie wszystkich kontenerów:
+
+1
+docker rm -f $(docker ps -a -q)
+Usuwanie wszystkich obrazów:
+
+1
+docker rmi -f $(docker images -a -q)
+Czyszczenie wszystkich wolumenów:
+
+1
+docker volume rm $(docker volume ls -q)
+Czyszczenie sieci:
+
+1
+docker network rm $(docker network ls | tail -n+2 | awk '{if($2 !~ /bridge|none|host/){ print $1 }}')
+Jeśli znasz interesujące komendy to podrzuć je, dla wzbogacenia bazy wiedzy 🙂
+
 ----------------------------------------------------------------
 
 Tworzenie obrazu bazy danych mysql - Ważne przejdź to jak montujesz bazę po raz pierwszy:
