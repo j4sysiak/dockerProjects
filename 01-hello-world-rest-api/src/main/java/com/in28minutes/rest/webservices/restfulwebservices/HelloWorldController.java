@@ -20,6 +20,8 @@ public class HelloWorldController {
 	}
 
 	//    http://localhost:8080/hello-world-bean
+	//docker prod    http://localhost:8000/hello-world-bean
+	//docker test    http://localhost:7000/hello-world-bean
 	@GetMapping(path = "/hello-world-bean")
 	public HelloWorldBean helloWorldBean() {
 		// throw new RuntimeException("Some Error has Happened! Contact Support at
@@ -28,6 +30,8 @@ public class HelloWorldController {
 	}
 
 	//   http://localhost:8080/hello-world/path-variable/in28minutes
+	//   http://localhost:8000/hello-world/path-variable/in28minutes
+	//   http://localhost:7000/hello-world/path-variable/in28minutes
 	@GetMapping(path = "/hello-world/path-variable/{name}")
 	public HelloWorldBean helloWorldPathVariable(@PathVariable String name) {
 		return new HelloWorldBean(String.format("Hello World v10, %s", name));

@@ -113,7 +113,7 @@ http://localhost:8000/hello-world
 3. uruchomienie przy pomocy pliku Dockerfile:
 
 dodajemy plik Dockerfile:
-EXPOSE 8080
+EXPOSE 8000
 ADD target/hello-world-rest-api.jar hello-world-rest-api.jar
 ENTRYPOINT ["sh", "-c", "java -jar /hello-world-rest-api.jar"]
 
@@ -142,7 +142,7 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 
 uruchamiamy image:
-docker run -p 8080:8080 j4sysiak/hello-world-rest-api:dockerfile1
+docker run -p 8000:8080 j4sysiak/hello-world-rest-api:dockerfile1
 
 4. robimy jakąś modyfikację w kodzie aplikacji
 i potem:
@@ -173,7 +173,7 @@ robię ponownie builda z dockerfile1:
 docker build -t j4sysiak/hello-world-rest-api:dockerfile1 .
 
 uruchamiamy image:
-docker run -p 8080:8080 j4sysiak/hello-world-rest-api:dockerfile1
+docker run -p 8000:8080 j4sysiak/hello-world-rest-api:dockerfile1
 
 -- zatrzymuje jakieś chodzące kontenery:
 docker container ls

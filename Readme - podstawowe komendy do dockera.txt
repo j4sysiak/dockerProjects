@@ -1,3 +1,120 @@
+https://www.youtube.com/watch?v=OSM8aw8G1kk
+instalacja i uruchomienie Ubuntu
+
+C:\Users\Jacek>docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+2b55860d4c66: Pull complete
+Digest: sha256:20fa2d7bb4de7723f542be5923b06c4d704370f0390e4ae9e1c833c8785644c1
+Status: Downloaded newer image for ubuntu:latest
+docker.io/library/ubuntu:latest
+
+C:\Users\Jacek>docker images
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+ubuntu       latest    2dc39ba059dc   11 days ago   77.8MB
+
+C:\Users\Jacek>docker run -it 2dc39ba059dc /bin/sh
+# ls
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+# bash
+root@9b664debe444:/# apt-get update   <-----------------  najpierw to , a dopiero pozostałe.
+root@9b664debe444:/# apt-get install iputils-ping
+root@9b664debe444:/# apt-get install vim -y
+root@9b664debe444:/# apt install curl
+root@9b664debe444:/# apt install unzip zip
+root@9b664debe444:/# curl -s https://get.sdkman.io | bash            ---------> java sdk
+root@9b664debe444:/# apt-get install mysql-server
+
+root@9b664debe444:/# apt-get install docker.io
+root@9b664debe444:/# service docker start
+root@9b664debe444:/# docker version
+root@9b664debe444:/# docker images
+root@9b664debe444:/# docker pull alpine
+
+
+
+============================NGINX=======================================
+https://www.youtube.com/watch?v=9y0EEwEnMfU
+instalacja i uruchomienie nginx 
+
+#docker pull nginx
+
+#docker run -p 8081:80 -d nginx
+
+odpalamy: localhost:8081
+
+#docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS              PORTS                  NAMES
+1a70cc1ec9bb   nginx     "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:8081->80/tcp   kind_stonebraker
+
+#docker exec -it 1a70cc /bin/sh
+
+root@1a70cc1ec9bb:/etc/nginx/conf.d# nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+root@1a70cc1ec9bb:/etc/nginx/conf.d# cat /etc/nginx/nginx.conf
+
+/.../
+
+include /etc/nginx/conf.d/*.conf;                 <-------------------   tutaj jest konfiguracja NGINX
+
+root@1a70cc1ec9bb:/etc/nginx/conf.d# vi /etc/nginx/conf.d/default.conf   (a w osobnej instancji NGINX na Ubuntu:  )
+lokacja index.html w pliku default.conf
+
+ location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    
+	
+	
+	idziemy do pliku index.htm
+	
+	
+root@1a70cc1ec9bb:/etc/nginx/conf.d#cd /usr/share/nginx/html
+
+
+root@1a70cc1ec9bb:/etc/nginx/conf.d# cd /usr/share/nginx/html
+root@1a70cc1ec9bb:/usr/share/nginx/html# ls
+50x.html  index.html
+root@1a70cc1ec9bb:/usr/share/nginx/html# cat index.html
+<!DOCTYPE html>
+<html>
+/.../
+</body>
+</html>
+
+
+root@9b664debe444:/etc/nginx/sites-available# service nginx status
+ * nginx is not running
+root@9b664debe444:/etc/nginx/sites-available# service nginx start
+ * Starting nginx nginx
+ 
+
+podmieniamy treść w index.html:
+
+root@1a70cc1ec9bb:/usr/share/nginx/html# echo "xxxxxxxxxxxxxxxxxxxxxxxxxx" > index.html
+
+odpalamy:  http://localhost:8081/
+i widzimy: xxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+
+
+location / {
+      #  root   /usr/share/nginx/html;
+      #  index  index.html index.htm;
+         proxy_pass http://localhost:8081;
+         proxy_set_header  X-Real-IP $remote_addr;
+         proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+         proxy_set_header  Host $http_host;
+    }
+
+
+================================================================
+
+
+
+
 https://bykowski.pl/docker-lista-komand-twoja-podreczna-sciaga/
 
 Kontenery
@@ -82,10 +199,17 @@ Tworzenie obrazu bazy danych mysql - Ważne przejdź to jak montujesz bazę po r
 
 #docker run -p 3307:3306 --name my-mysql -e MYSQL_ROOT_PASSWORD=Warszawa5584 -d mysql/mysql-server:8.0.30
 
+UWAGA - odczekaj kilka minut zanim mysql server stanie na porcie 3307 w dockerze.
+/.../
+2022-09-14T06:22:56.091772Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+2022-09-14T06:22:56.091906Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.30'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+
+
+
 podłączenie się do bazy:
 #docker exec -it my-mysql /bin/bash
 
-bash-4.4# mysql -u root -p
+bash-4.4# mysql -u root -p            (lub  mysql -h localhost -P 3307 -u root -p)
 Enter password: 
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 35

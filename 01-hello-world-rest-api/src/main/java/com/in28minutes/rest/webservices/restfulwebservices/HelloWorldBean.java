@@ -4,6 +4,7 @@ public class HelloWorldBean {
 
 	private String message;
 
+	public HelloWorldBean() {}
 	public HelloWorldBean(String message) {
 		this.message = message;
 	}
@@ -20,5 +21,4 @@ public class HelloWorldBean {
 	public String toString() {
 		return String.format("HelloWorldBean [message=%s]", message);
 	}
-
 }
