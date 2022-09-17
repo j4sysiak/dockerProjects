@@ -16,3 +16,4 @@ EXPOSE 8080/tcp
 #EXPOSE 8090
 #CMD ["My first argument", "Standard argument no 2"]
 #ENTRYPOINT ["echo", "hello our container is running"]
+ENTRYPOINT ["java", "-jar", "myspringapp.jar"]
