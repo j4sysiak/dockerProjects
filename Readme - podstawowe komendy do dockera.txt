@@ -1,3 +1,8 @@
+fajne szkolenia oparte na Gradle: https://www.youtube.com/watch?v=hc3sw-njQuA&list=PLF5X0J2bZ_k44MMIJvncXgJkzy0KxBGMB&index=2
+
+
+==============================================================================================================================
+
 https://www.youtube.com/watch?v=OSM8aw8G1kk
 instalacja i uruchomienie Ubuntu
 
@@ -30,7 +35,13 @@ root@9b664debe444:/# service docker start
 root@9b664debe444:/# docker version
 root@9b664debe444:/# docker images
 root@9b664debe444:/# docker pull alpine
+root@9b664debe444:/# docker images
 
+root@9b664debe444:/# docker run -it alpine
+/ # ps -ef
+PID   USER     TIME  COMMAND
+    1 root      0:00 /bin/sh
+    7 root      0:00 ps -ef
 
 
 ============================NGINX=======================================
@@ -41,7 +52,17 @@ instalacja i uruchomienie nginx
 
 #docker run -p 8081:80 -d nginx
 
-odpalamy: localhost:8081
+odpalamy: curl --head "http://localhost:8081"
+HTTP/1.1 200 OK
+Server: nginx/1.23.1
+Date: Thu, 15 Sep 2022 06:26:00 GMT
+Content-Type: text/html
+Content-Length: 615
+Last-Modified: Tue, 19 Jul 2022 14:05:27 GMT
+Connection: keep-alive
+ETag: "62d6ba27-267"
+Accept-Ranges: bytes
+
 
 #docker ps
 CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS              PORTS                  NAMES

@@ -1,0 +1,9 @@
+#ARG MYTAG=latest
+#FROM ubuntu:${MYTAG}
+#FROM ubuntu:latest
+#RUN apt-get update
+#RUN apt-get install -y curl
+#ADD mytextfile.txt /tmp/newnamemytextfile.txt
+#COPY mytextfile.txt /tmp/newnamemytextfile.txt
+#CMD ["My first argument", "Standard argument no 2"]
+#ENTRYPOINT ["echo", "hello our container is running"]
