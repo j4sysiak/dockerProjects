@@ -21,7 +21,8 @@ repositories {
 
 docker {
     name "${project.name}"
-    dockerfile file('src/docker/Dockerfile')
+//    dockerfile file('src/docker/Dockerfile')
+	dockerfile file('script3/Dockerfile')
     copySpec.from(jar).rename(".*","app.jar")
     buildArgs(['JAR_FILE': 'app.jar'])
 }

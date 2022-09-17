@@ -2,17 +2,14 @@ https://www.youtube.com/watch?v=x7nrGLJLN5U&list=PLF5X0J2bZ_k44MMIJvncXgJkzy0KxB
 
 https://github.com/palantir/gradle-docker
 
+
 C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\nginx-demo1> gradle tasks
+widać, że pojawił się w zakładce Gradle nowy katalog zadań:  docker z taskami gradlowymi
 
-C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\nginx-demo1\src\docker\Dockerfile
-
-
-widać, że pojawił się w zakładce Gradle nowy katalog zadań:  docker
-
-
+C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\nginx-demo1> gradle clean build
 C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\nginx-demo1> gradle clean docker
 
-jak z tego będzie błąd to odpal task gradlowy (na to samo w sumie wyjdzie):
+jak z tego będzie błąd to odpal taski gradlowe (na to samo w sumie wyjdzie):
 1. application/clean
 2. application/build
 3. application/bootJar
@@ -20,8 +17,6 @@ jak z tego będzie błąd to odpal task gradlowy (na to samo w sumie wyjdzie):
 i potem:
 docker/docker
 
-lub gradle build build
-i potem gradle clean docker
 
 powstaje plik app.jar w lokalizacji:  C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\nginx-demo1\build\docker\app.jar
 
