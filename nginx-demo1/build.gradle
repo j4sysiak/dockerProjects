@@ -2,7 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.2.6.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
-	id 'com.palantir.docker' version '0.34.0'
+	id 'com.palantir.docker' version '0.22.1'
 }
 
 group = 'com.example'
@@ -20,8 +20,8 @@ repositories {
 }
 
 docker {
-    name "mycoolapp"
-    dockerfile file('script3/Dockerfile')
+    name "${project.name}"
+    dockerfile file('src/docker/Dockerfile')
     copySpec.from(jar).rename(".*","app.jar")
     buildArgs(['JAR_FILE': 'app.jar'])
 }
