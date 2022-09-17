@@ -1,3 +1,7 @@
+https://www.youtube.com/watch?v=hc3sw-njQuA&list=PLF5X0J2bZ_k44MMIJvncXgJkzy0KxBGMB&index=2
+
+
+
 C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\nginx-demo1\script2>docker build --help
 
 C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\nginx-demo1\script2>docker rmi $(docker images -q)
