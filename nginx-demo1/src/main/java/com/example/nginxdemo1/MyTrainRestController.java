@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class MyTrainRestController {
 
-
     // end point: http://localhost:8080/api/timetable
     @GetMapping("/timetable")
     public String timetable(){
