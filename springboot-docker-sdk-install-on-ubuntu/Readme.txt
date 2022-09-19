@@ -45,7 +45,7 @@ lub uruchamianie z cmd:
 
 root@e2741a2f8de2:/# ls -ls
 total 17292
-    4 -rwxrwx---   1 root root      111 Sep 18 18:18 apprun.sh
+    4 -rwxrwx---   1 root root      111 Sep 18 18:18 apprun.sh     <---------------  to ciekawe
     4 drwxr-xr-x   1 root root     4096 Sep 18 16:20 bin
     4 drwxr-xr-x   2 root root     4096 Apr 24  2018 boot
     0 drwxr-xr-x   5 root root      360 Sep 18 18:46 dev
@@ -55,7 +55,7 @@ total 17292
     4 drwxr-xr-x   2 root root     4096 Sep  2 08:52 lib64
     4 drwxr-xr-x   2 root root     4096 Sep  2 08:51 media
     4 drwxr-xr-x   2 root root     4096 Sep  2 08:51 mnt
-17204 -rwxr-xr-x   1 root root 17613791 Sep 18 18:43 myapp.jar
+17204 -rwxr-xr-x   1 root root 17613791 Sep 18 18:43 myapp.jar      <---------------  to ciekawe
     4 drwxr-xr-x   2 root root     4096 Sep  2 08:51 opt
     0 dr-xr-xr-x 209 root root        0 Sep 18 18:46 proc
     8 drwx------   1 root root     4096 Sep 18 16:25 root
