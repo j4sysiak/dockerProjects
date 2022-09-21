@@ -74,6 +74,50 @@ drwxr-xr-x    7 root     root          4096 Sep 20 18:50 build
 
 
 
+:\Users\Jacek>docker images
+REPOSITORY                 TAG            IMAGE ID       CREATED          SIZE
+myapp                      latest         8bdab85b868d   7 minutes ago    140MB
+<none>                     <none>         33b2840dc5ac   8 minutes ago    428MB
+azul/zulu-openjdk-alpine   8-jre          6bf89dd63f82   57 minutes ago   123MB
+openjdk                    8-jdk-alpine   a3562aa0b991   3 years ago      105MB
+
+
+C:\Users\Jacek>docker run -it --rm 8bdab85b868d /bin/sh
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.7.RELEASE)
+
+2022-09-21 05:05:06.773  INFO 1 --- [           main] e.d.DemoDockerMultistageBuildApplication : Starting DemoDockerMultistageBuildApplication on 1d2c6205814b with PID 1 (/app.jar started by root in /)
+2022-09-21 05:05:06.789  INFO 1 --- [           main] e.d.DemoDockerMultistageBuildApplication : No active profile set, falling back to default profiles: default
+2022-09-21 05:05:10.517  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-21 05:05:10.621  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-21 05:05:10.622  INFO 1 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2022-09-21 05:05:10.875  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-21 05:05:10.876  INFO 1 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3791 ms
+2022-09-21 05:05:11.395  INFO 1 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-21 05:05:11.933  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-21 05:05:11.949  INFO 1 --- [           main] e.d.DemoDockerMultistageBuildApplication : Started DemoDockerMultistageBuildApplication in 6.404 seconds (JVM running for 7.209)
+
+
+tutaj mamy artefakty:
+C:\Users\Jacek>docker run -it --rm 33b2840dc5ac /bin/sh
+/opt/project # ls -ls
+total 24
+     4 drwxr-xr-x    7 root     root          4096 Sep 21 04:52 build
+     4 -rwxr-xr-x    1 root     root           706 Sep 19 05:03 build.gradle
+     4 drwxr-xr-x    3 root     root          4096 Sep 21 04:50 gradle
+     8 -rwxr-xr-x    1 root     root          8188 Sep 19 02:44 gradlew
+     4 drwxr-xr-x    3 root     root          4096 Sep 21 04:50 src
+
+
+
+
+
 -----------------  odpalanie z CMD
 
 $ docker rmi $(docker images -q)
@@ -136,5 +180,14 @@ $ docker ps
 CONTAINER ID   IMAGE          COMMAND                CREATED         STATUS         PORTS     NAMES
 7636f59d4c1f   myapp:latest   "java -jar /app.jar"   4 minutes ago   Up 4 minutes             confident_brahmagupta
 
+
+
+================================ just playing
+$ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+myapp        latest    0bed05eb54e1   20 minutes ago   140MB
+
+
+$ docker run -it --rm 0bed05eb54e1 /bin/sh
 
 
