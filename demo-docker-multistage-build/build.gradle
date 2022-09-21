@@ -24,3 +24,12 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
+task buildForDocker(type: Copy) {
+	dependsOn build
+	from bootJar
+	into 'build/libs/docker'
+	rename { String fileName ->
+		"app.jar"
+	}
+}
