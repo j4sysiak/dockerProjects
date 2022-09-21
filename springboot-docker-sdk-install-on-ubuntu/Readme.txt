@@ -19,9 +19,6 @@ $ docker images
 REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
 mysdkman     latest    0bcccc1d1e4c   2 minutes ago   942MB
 
-
-$ docker run -it --rm mysdkman:latest
-
 $ docker run -it --rm mysdkman:latest
 Lets start our application
 openjdk version "12.0.2" 2019-07-16
