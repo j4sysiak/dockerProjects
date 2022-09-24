@@ -7,6 +7,11 @@ https://github.com/ekim197711/rabbitmq-nginx/tree/master/ha
 ==================================================================
 
 cd script-ha
+$ docker-compose build
+$ docker-compose up
+
+
+
 
 C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\rabbitmq-high-availability-with-nginx\script-ha>
 
