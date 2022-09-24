@@ -7,15 +7,15 @@ https://github.com/ekim197711/rabbitmq-nginx/tree/master/ha
 ==================================================================
 
 cd script-ha
+C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\rabbitmq-high-availability-with-nginx\script-ha>
 $ docker-compose build
 $ docker-compose up
 
-
-
-
-C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\rabbitmq-high-availability-with-nginx\script-ha>
-
 odpalamy rabbita:
-http://localhost:15672/#/
+http://localhost:15000
 logujemy się po raz pierwszy na guest hasło: guest
 potem na mike hasło: mike
+
+
+
+
