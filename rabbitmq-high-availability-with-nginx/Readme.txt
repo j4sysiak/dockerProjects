@@ -40,6 +40,20 @@ $ conda config --add channels conda-forge
 $ conda install pika
 $ python sendmessages.py
 
+Send message to queue hello
+Send message to queue hello
+Send message to queue hello
+[...]
+
+odpalamy Rabbita:
+
+http://localhost:15000
+i widzimy kolejki z messagami: Send message to queue hello
+W zakładce Overview widać, że cały czas ngnix przełącza Nodes -> namesię pomiędzy: rabbit@rabbitmq2 i rabbit@rabbitmq1
+
+
+
+
 
 
 
