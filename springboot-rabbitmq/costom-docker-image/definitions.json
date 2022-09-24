@@ -45,7 +45,7 @@
       "arguments": {}
     }
   ],
-  "quenes": [
+  "queues": [
     {
       "name": "alien.furry",
       "vhost": "/",
