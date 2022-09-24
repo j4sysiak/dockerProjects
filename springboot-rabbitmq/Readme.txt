@@ -7,11 +7,10 @@ https://www.rabbitmq.com/configure.html#config0file
 
 C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\springboot-rabbitmq\costom-docker-image\docker-compose.yml up -d mikesrabbitmq
 
-odpalamy Rabbita:
-
-http://localhost:15672
-
-
-
+ 
+odpalamy rabbita:
+http://localhost:15672/#/
+logujemy się po raz pierwszy na guest hasło: guest
+potem na mike hasło: mike
 
 

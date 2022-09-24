@@ -10,3 +10,7 @@ cd script-ha
 
 C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\rabbitmq-high-availability-with-nginx\script-ha>
 
+odpalamy rabbita:
+http://localhost:15672/#/
+logujemy się po raz pierwszy na guest hasło: guest
+potem na mike hasło: mike
