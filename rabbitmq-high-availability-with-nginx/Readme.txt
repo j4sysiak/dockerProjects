@@ -11,8 +11,10 @@ C:\Users\Jacek\Documents\JAVA\SpringBoot\dockerProjects\rabbitmq-high-availabili
 $ docker-compose build
 $ docker-compose up
 
-odpalamy rabbita:
-http://localhost:15000
+odpalamy rabbita  (na tym etapie będzie chodził na trzech portach):
+http://localhost:15000  -- od NGNIX
+http://localhost:15600  -- od rabbitmq1
+http://localhost:15700  -- od rabbitmq2
 logujemy się po raz pierwszy na guest hasło: guest
 potem na mike hasło: mike
 
