@@ -8,6 +8,7 @@ public class TestController {
 
 
     //   http://localhost:8080/api/test
+    //  docker:   http://localhost:9000/api/test
     @GetMapping(path="/api/test")
     public String destination(){
         return "TEST";
