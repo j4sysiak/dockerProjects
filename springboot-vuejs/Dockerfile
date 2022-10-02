@@ -12,7 +12,7 @@ COPY ./ ./
 RUN ./gradlew clean build --no-daemon
 
 FROM alpine:latest
-RUN apk add --no-cache wget tar
+RUN apk add --no-cache wget tar npm
 RUN mkdir /myapp
 WORKDIR /myapp
 RUN wget https://cdn.azul.com/zulu/bin/zulu14.28.21-ca-jre14.0.1-linux_musl_x64.tar.gz

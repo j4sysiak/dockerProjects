@@ -1,12 +1,12 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.2.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'org.springframework.boot' version '2.3.0.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '14'
 
 configurations {
 	compileOnly {
@@ -14,12 +14,27 @@ configurations {
 	}
 }
 
+repositories {
+	mavenCentral()
+}
+
+processResources{
+	dependsOn 'copyFrontendToBuild'
+}
+
 bootJar {
 	archiveFileName = "app.jar"
 }
 
-repositories {
-	mavenCentral()
+task copyFrontendToBuild(type: Copy) {
+	dependsOn 'npmBuild'
+	from "$projectDir/src/myvuejs/dist/"
+	into "$buildDir/resources/main/static"
+}
+
+task npmBuild(type: Exec) {
+	workingDir './src/myvuejs/'
+	commandLine 'npm','run', 'build'
 }
 
 dependencies {

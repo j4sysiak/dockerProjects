@@ -3,8 +3,6 @@ services:
   mikesapp:
       image: mikesapp
       container_name: mikesapp
-      build:
-        context: .
-        dockerfile: Dockerfile
+      build: .
       ports:
         - "9000:8080"

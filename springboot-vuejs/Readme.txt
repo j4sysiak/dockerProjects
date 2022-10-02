@@ -29,3 +29,6 @@ https://www.youtube.com/watch?v=PcdaxF452b0&list=PLF5X0J2bZ_k44MMIJvncXgJkzy0KxB
 
 https://github.com/ekim197711/springboot-vuejs-gradle
 
+uruchamiamy: docker-compose up
+odpalenie backendu:   http://localhost:9000/api/test
+odpalenie frontu (Vue):   http://localhost:9000
