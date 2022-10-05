@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App - update massage 02-10-2022 09:59"/>
+  <HelloWorld msg="Welcome to Your Vue.js App - update massage 05-10-2022 05:30"/>
 </template>
 
 <script>

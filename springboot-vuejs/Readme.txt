@@ -32,3 +32,12 @@ https://github.com/ekim197711/springboot-vuejs-gradle
 uruchamiamy: docker-compose up
 odpalenie backendu:   http://localhost:9000/api/test
 odpalenie frontu (Vue):   http://localhost:9000
+
+
+==============================   cz.3.  Spring Boot and VueJS in same jar with gradle
+
+https://www.youtube.com/watch?v=eVUiDsq7PaY
+
+https://github.com/ekim197711/springboot-vuejs-gradle
+
+
