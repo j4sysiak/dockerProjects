@@ -36,8 +36,43 @@ odpalenie frontu (Vue):   http://localhost:9000
 
 ==============================   cz.3.  Spring Boot and VueJS in same jar with gradle
 
+Uwaga: tutaj jest taka zagwozdka. Jeżeli uruchamiamy npm z Widowsa, to w pliku build.gradle powinno być:
+
+task npmBuild(type: Exec) {
+	workingDir './src/myvuejs/'
+	commandLine 'npm.cmd', 'run', 'build'
+}
+
+
+
+
 https://www.youtube.com/watch?v=eVUiDsq7PaY
 
 https://github.com/ekim197711/springboot-vuejs-gradle
 
+--  nie buduje tylko sprawdza, czy wszystko jest ok
+Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/dockerProjects/springboot-vuejs (master)
+$ gradle clean build --dry-run
+Starting a Gradle Daemon (subsequent builds will be faster)
+:clean SKIPPED
+:compileJava SKIPPED
+:npmBuild SKIPPED
+:copyFrontendToBuild SKIPPED
+:processResources SKIPPED
+:classes SKIPPED
+:bootJar SKIPPED
+:jar SKIPPED
+:assemble SKIPPED
+:compileTestJava SKIPPED
+:processTestResources SKIPPED
+:testClasses SKIPPED
+:test SKIPPED
+:check SKIPPED
+:build SKIPPED
 
+BUILD SUCCESSFUL in 44s
+
+
+
+--  właściwy cean/build
+$ gradle clean build

@@ -22,7 +22,7 @@ processResources{
 	dependsOn 'copyFrontendToBuild'
 }
 
-bootJar {
+bootJar{
 	archiveFileName = "app.jar"
 }
 
@@ -34,7 +34,7 @@ task copyFrontendToBuild(type: Copy) {
 
 task npmBuild(type: Exec) {
 	workingDir './src/myvuejs/'
-	commandLine 'npm','run', 'build'
+	commandLine 'npm.cmd', 'run', 'build'
 }
 
 dependencies {
