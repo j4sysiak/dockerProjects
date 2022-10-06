@@ -23,18 +23,8 @@ Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/dockerProjects/springboot-vuejs
 $ vue ui    (odpaloamy localhost:8000)
 
 
-========================== cz.2. łączenie SpringBoota restem z  Vue i jeszcze do tego na Dockerze :) =================
 
-https://www.youtube.com/watch?v=PcdaxF452b0&list=PLF5X0J2bZ_k44MMIJvncXgJkzy0KxBGMB&index=18
-
-https://github.com/ekim197711/springboot-vuejs-gradle
-
-uruchamiamy: docker-compose up
-odpalenie backendu:   http://localhost:9000/api/test/greeting
-odpalenie frontu (Vue):   http://localhost:9000
-
-
-==============================   cz.3.  Spring Boot and VueJS in same jar with gradle
+==============================   cz.2.  Spring Boot and VueJS in same jar with gradle
 
 Uwaga: tutaj jest taka zagwozdka. Jeżeli uruchamiamy npm z Widowsa, to w pliku build.gradle powinno być:
 
@@ -42,8 +32,6 @@ task npmBuild(type: Exec) {
 	workingDir './src/myvuejs/'
 	commandLine 'npm.cmd', 'run', 'build'
 }
-
-
 
 
 https://www.youtube.com/watch?v=eVUiDsq7PaY
@@ -110,3 +98,31 @@ $ java -jar ./app.jar
 
 odpalamy Vue:  http://localhost:8080
 odpalamy Springboota:  http://localhost:8080/api/test/greeting
+
+
+
+
+
+
+========================== cz.3. łączenie SpringBoota restem z  Vue i jeszcze do tego na Dockerze :) =================
+Spring Boot and VueJS and Docker multistage build
+https://www.youtube.com/watch?v=PcdaxF452b0&list=PLF5X0J2bZ_k44MMIJvncXgJkzy0KxBGMB&index=18
+
+
+https://github.com/ekim197711/springboot-vuejs-gradle
+
+
+Uwaga: tutaj jest taka zagwozdka. Jeżeli uruchamiamy npm z Dockera (czyli z Linuxa), to w pliku build.gradle powinno być:
+
+task npmBuild(type: Exec) {
+	workingDir './src/myvuejs/'
+	commandLine 'npm', 'run', 'build'
+}
+
+uruchamiamy: docker-compose up
+odpalenie backendu:   http://localhost:9000/api/test/greeting
+odpalenie frontu (Vue):   http://localhost:9000
+
+
+
+
