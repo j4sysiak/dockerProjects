@@ -42,47 +42,24 @@ total 28
      4 drwxr-xr-x    1 root     root          4096 Oct  7 17:52 tmp
 
 
-/artemis/mike # cd /etc
-/etc # ls -la
-total 168
-drwxr-xr-x    1 root     root          4096 Oct  7 17:52 .
+/artemis/mike # cd etc
+/artemis/mike/etc # ls -al
+total 56
+drwxr-xr-x    2 root     root          4096 Oct  7 17:51 .
 drwxr-xr-x    1 root     root          4096 Oct  7 17:52 ..
--rw-r--r--    1 root     root             7 Aug  9 08:46 alpine-release
-drwxr-xr-x    1 root     root          4096 Oct  7 17:49 apk
-drwxr-xr-x    2 root     root          4096 Aug  9 08:47 conf.d
-drwxr-xr-x    2 root     root          4096 Aug  9 08:47 crontabs
--rw-r--r--    1 root     root            89 Jun 13 15:39 fstab
--rw-r--r--    1 root     root           697 Jun 13 15:39 group
--rw-r--r--    1 root     root            13 Oct  7 17:52 hostname
--rw-r--r--    1 root     root           174 Oct  7 17:52 hosts
-drwxr-xr-x    2 root     root          4096 Aug  9 08:47 init.d
--rw-r--r--    1 root     root           570 Jun 13 15:39 inittab
--rw-r--r--    1 root     root            54 Aug  9 08:46 issue
-drwxr-xr-x    2 root     root          4096 Aug  9 08:47 logrotate.d
-drwxr-xr-x    2 root     root          4096 Aug  9 08:47 modprobe.d
--rw-r--r--    1 root     root            15 Jun 13 15:39 modules
-drwxr-xr-x    2 root     root          4096 Aug  9 08:47 modules-load.d
--rw-r--r--    1 root     root           283 Jun 13 15:39 motd
-lrwxrwxrwx    1 root     root            12 Oct  7 17:52 mtab -> /proc/mounts
-drwxr-xr-x    8 root     root          4096 Aug  9 08:47 network
-drwxr-xr-x    2 root     root          4096 Aug  9 08:47 opt
--rw-r--r--    1 root     root           188 Aug  9 08:46 os-release
--rw-r--r--    1 root     root          1172 Jun 13 15:39 passwd
-drwxr-xr-x    7 root     root          4096 Aug  9 08:47 periodic
--rw-r--r--    1 root     root           857 Jun 13 15:39 profile
-drwxr-xr-x    2 root     root          4096 Aug  9 08:47 profile.d
--rw-r--r--    1 root     root          2932 Jun 13 15:39 protocols
--rw-r--r--    1 root     root            38 Oct  7 17:52 resolv.conf
-drwxr-xr-x    2 root     root          4096 Aug  9 08:46 secfixes.d
--rw-r--r--    1 root     root            98 Aug  1 15:14 securetty
--rw-r--r--    1 root     root         12966 Jun 13 15:39 services
--rw-r-----    1 root     shadow         422 Aug  9 08:47 shadow
--rw-r--r--    1 root     root            38 Jun 13 15:39 shells
-drwxr-xr-x    5 root     root          4096 Aug  9 08:47 ssl
--rw-r--r--    1 root     root            53 Jun 13 15:39 sysctl.conf
-drwxr-xr-x    2 root     root          4096 Aug  9 08:47 sysctl.d
--rw-r--r--    1 root     root          5636 Aug  1 15:14 udhcpd.conf
--rw-r--r--    1 root     root          4945 Apr  1  2022 wgetrc
+-rw-r--r--    1 root     root           960 Oct  7 17:51 artemis-roles.properties
+-rw-r--r--    1 root     root          1160 Oct  7 17:51 artemis-users.properties
+-rw-r--r--    1 root     root          3017 Oct  7 17:51 artemis.profile
+-rw-r--r--    1 root     root          1514 Oct  7 17:51 bootstrap.xml
+-rw-r--r--    1 root     root         11126 Oct  7 17:51 broker.xml
+-rw-r--r--    1 root     root          1304 Oct  7 17:51 jolokia-access.xml
+-rw-r--r--    1 root     root          3571 Oct  7 17:51 logging.properties
+-rw-r--r--    1 root     root          1086 Oct  7 17:51 login.config
+-rw-r--r--    1 root     root          2172 Oct  7 17:51 management.xml
+
+/artemis/mike/etc # cat broker.xml
+
+
 
 
 
