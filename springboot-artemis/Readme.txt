@@ -59,6 +59,56 @@ drwxr-xr-x    1 root     root          4096 Oct  7 17:52 ..
 
 /artemis/mike/etc # cat broker.xml
 
+/artemis/mike/etc # cd ../bin
+
+/artemis/mike/bin # ./artemis queue create
+Connection brokerURL = tcp://localhost:61616
+Connection failed::AMQ229031: Unable to validate user from /127.0.0.1:33734. Username: null; SSL certificate subject DN: unavailable
+
+--user: is a mandatory property!
+Type the username for a retry
+mike
+
+--password: is mandatory with this configuration:
+Type the password for a retry
+mike
+
+--name: is a mandatory property!
+Please provide the destination name:
+newcoolqueue1
+
+--address: is a mandatory property!
+Enter the address name. <Enter for newcoolqueue1>
+
+
+--anycast: is a mandatory property!
+is this an anycast queue, valid values are Y,N,True,False
+Y
+
+--durable: is a mandatory property!
+Is this a durable queue, valid values are Y,N,True,False
+Y
+
+--purge-on-no-consumers: is a mandatory property!
+Purge the contents of the queue once there are no consumers, valid values are Y,N,True,False
+N
+
+--auto-create-address: is a mandatory property!
+should auto create the address if it doesn't exist, valid values are Y,N,True,False
+Y
+Queue [name=newcoolqueue1, address=newcoolqueue1, routingType=ANYCAST, durable=true, purgeOnNoConsumers=false, autoCreateAddress=false, exclusive=false, lastValue=false, lastValueKey=null, nonDestructive=false, consumersBeforeDispatch=0, delayBeforeDispatch=-1, autoCreateAddress=false] created successfully.
+/artemis/mike/bin #
+
+strona główna:
+odpalamy: http://localhost:8161
+
+lub konsola:
+http://localhost:8161/console/login
+login: mike
+hasło: mike
+
+w zakładce:  Queues  lub Addresses
+widzimy kolejkę: newcoolqueue1
 
 
 
