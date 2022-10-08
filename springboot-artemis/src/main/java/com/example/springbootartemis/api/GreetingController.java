@@ -7,24 +7,27 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/greeting")
 @Slf4j
 public class GreetingController {
+
+    // dzięki temu, że mamy adnotację @RequiredArgsConstructor  to wstrzykujemy automatycznie do konstruktowa tą zależność
+    // jest private, więc Lombok automatycznie wstrzyknie do konstruktora jmsTemplate
     private final JmsTemplate jmsTemplate;
 
-    // http://localhost:8080/api/my-getting
-    @GetMapping("/my-getting")
-    public String test() {
-        log.info("Send this message to jms queue");
-        return "test: GreetingController from GetMapping";
-    }
+    // http://localhost:8080/greeting/
+//    @GetMapping("/")
+//    public String test() {
+//        log.info("Send this message to jms queue");
+//        return "test: GreetingController from GetMapping";
+//    }
 
 
-    //   http://localhost:8080/api/my-posting  - w bdy podajemy jakiś string np "bla-bla-bla"
-    @PostMapping("/my-posting")
+    //   http://localhost:8080/greeting/  - w bdy podajemy jakiś string np "bla-bla-bla"
+    @PostMapping("/")
     public String sendMessage(@RequestBody String message) {
         log.info("Send this message to jms queue: " + message);
-        jmsTemplate.convertAndSend("myqueue2", message);
+        //jmsTemplate.convertAndSend("myqueue2", message);
         return "Message sent " + message;
     }
 
