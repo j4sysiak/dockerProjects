@@ -117,3 +117,12 @@ widzimy kolejkę: newcoolqueue1
 
 https://www.youtube.com/watch?v=4iy5B72rPG4
 
+1. mamy odpalonego dockera z pkt.1.
+2. odpalamy SpringBoota
+3. odpalamy curle:
+curl -d "Hello Im happy and its sunny" "localhost:8080/greeting/"
+curl -H "Content-Type: application/json" -d '{"name": "pyramid", "fuel": 99}' "localhost:8080/spaceship/"
+
+4. logujemy się artemisa: http://localhost:8161/console/
+5. w zakładce Addersses widzimy nasze kolejki:  myqueue2 i spaceships
+
