@@ -19,6 +19,7 @@ import javax.jms.TextMessage;
 public class SpaceShipController {
     private final JmsTemplate jmsTemplate;
 
+    //   http://localhost:8080/spaceship/  - w body podajemy obiekt SpaceShip
     @PostMapping("/")
     public String sendShip(@RequestBody SpaceShip ship) {
         log.info("Send this message to jms queue: " + ship);
@@ -36,35 +37,3 @@ public class SpaceShipController {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

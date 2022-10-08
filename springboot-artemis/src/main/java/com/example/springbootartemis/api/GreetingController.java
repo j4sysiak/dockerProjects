@@ -3,7 +3,10 @@ package com.example.springbootartemis.api;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,11 +26,11 @@ public class GreetingController {
 //    }
 
 
-    //   http://localhost:8080/greeting/  - w bdy podajemy jakiś string np "bla-bla-bla"
+    //   http://localhost:8080/greeting/  - w body podajemy jakiś string np "bla-bla-bla"
     @PostMapping("/")
     public String sendMessage(@RequestBody String message) {
         log.info("Send this message to jms queue: " + message);
-        //jmsTemplate.convertAndSend("myqueue2", message);
+        jmsTemplate.convertAndSend("myqueue2", message);
         return "Message sent " + message;
     }
 
