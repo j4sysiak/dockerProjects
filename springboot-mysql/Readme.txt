@@ -9,6 +9,10 @@ https://github.com/ekim197711/springboot-mysql/blob/main/docker/docker-compose.y
 
 ---------------------------------------------------------------------------------------------
 
+UWAGA:  wklejanie w terminalu play-with-docker za pomocą ctrl+SHITF+V
+just found that ctrl + insert (copy) and shitft + insert(paste) should also work.
+
+
 uruchamiamy:
 https://labs.play-with-docker.com
 i Start ...
@@ -43,7 +47,12 @@ $ docker-compose up -d
 $ docker ps
 $ docker images
 
-na stronie otwarej sesji https://labs.play-with-docker.com - klikamy na port "8080" -  otwiera się strona:  http://ip172-18-0-13-cd33k8n91rrg00djegrg-8080.direct.labs.play-with-docker.com
+na stronie otwarej sesji https://labs.play-with-docker.com - klikamy na port "8080" -  otwiera się strona:
+ - lob klikamy 'OPEN PORT' i wpisujemy 8080
+
+ otwiera się strona logowania do bazy:
+http://ip172-18-0-13-cd33k8n91rrg00djegrg-8080.direct.labs.play-with-docker.com
+
 
 logowanie do bazy:
 login: root
@@ -59,17 +68,12 @@ niby się zalogowałem do bazy ale schematu db nie ma jeszcze.
 krok 3: uruchomienie ngrok
 https://gist.github.com/SalahHamza/799cac56b8c2cd20e6bfeb8886f18455
 
-tworzymy w katalogu root plik kaka.sh
 
-#! /bin/bash
-echo pppppppppppppppp
 wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 unzip ngrok-stable-linux-amd64.zip
 sudo apt install unzip
 
-$ chmod 777 kaka
-$ ./kaka
-$ ./gkrok
+
 
 
 
