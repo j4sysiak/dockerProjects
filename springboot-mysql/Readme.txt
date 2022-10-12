@@ -68,12 +68,45 @@ niby się zalogowałem do bazy ale schematu db nie ma jeszcze.
 krok 3: uruchomienie ngrok
 https://gist.github.com/SalahHamza/799cac56b8c2cd20e6bfeb8886f18455
 
+in case you don't have unzip installed, you can do that like this
+$ sudo apt install unzip
 
-wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-unzip ngrok-stable-linux-amd64.zip
-sudo apt install unzip
+$ wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+$ unzip ngrok-stable-linux-amd64.zip
+$ ./ngrok version
+ngrok version 2.3.40
+
+all you need to do is specify a port where your website is servered so that you expose it to the internet. Example
+./ngrok http 8000
+passing the above command will produce this output
+
+ngrok by @inconshreveable                                                                                                                                 (Ctrl+C to quit)
+
+Session Status                online
+Session Expires               1 hour, 56 minutes
+Version                       2.3.40
+Region                        United States (us)
+Web Interface                 http://127.0.0.1:4040
+Forwarding                    http://f4df-20-25-0-130.ngrok.io -> http://localhost:8000
+Forwarding                    https://f4df-20-25-0-130.ngrok.io -> http://localhost:8000
+
+Connections                   ttl     opn     rt1     rt5     p50     p90
+                              2       0       0.02    0.01    0.00    0.00
 
 
+na przegląarce mamy:
+Failed to complete tunnel connection
+The connection to https://f4df-20-25-0-130.ngrok.io
+was successfully tunneled to your ngrok client, but the client failed to establish a connection to the local address
+localhost:8000.
+
+Make sure that a web service is running on localhost:8000 and that it is a valid address.
+
+The error encountered was: dial tcp 127.0.0.1:8000: connect: connection refused
+
+
+czyli trzeba uruchomić moją aplikację Springbootową na porcie 8000:
+http://localhost:8000
 
 
 
