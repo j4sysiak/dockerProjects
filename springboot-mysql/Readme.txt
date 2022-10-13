@@ -143,6 +143,21 @@ port:  15408
 login: root
 hasło: test1234
 
+tworzymy schemat: space
+CREATE SCHEMA `space`;
+
+tworzymy jakąś tabelkę:
+
+CREATE TABLE `space`.`Test` (
+  `idTest` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  PRIMARY KEY (`idTest`))
+COMMENT = 'test table';
+
+select * from `space`.`Test`;
+
+
+
 ----------------------------  testy
 ssh ip172-18-0-13-cd33k8n91rrg00djegrg@direct.labs.play-with-docker.com
 
