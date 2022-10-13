@@ -10,14 +10,17 @@ https://github.com/ekim197711/springboot-mysql/blob/main/docker/docker-compose.y
 ---------------------------------------------------------------------------------------------
 
 UWAGA:  wklejanie w terminalu play-with-docker za pomocą ctrl+SHITF+V
-just found that ctrl + insert (copy) and shitft + insert(paste) should also work.
 
+ctrl + insert (copy)
+shitft + insert (paste)
+
+---------------------------------------------------------------------------------------------
 
 uruchamiamy:
 https://labs.play-with-docker.com
 i Start ...
 
-krok 1:  dodanie pliku
+------------------------------> krok 1:  dodanie pliku
 $ vi docker-compose.yml
 
 wklejamy zawartość:
@@ -42,7 +45,7 @@ services:
       - 8080:8080
 
 
-krok 2: uruchomienie
+------------------------------> krok 2: uruchomienie
 $ docker-compose up -d
 $ docker ps
 $ docker images
@@ -65,7 +68,7 @@ Zalogowany jako: root@172.20.0.3
 niby się zalogowałem do bazy ale schematu db nie ma jeszcze.
 
 
-krok 3: uruchomienie ngrok
+------------------------------> krok 3: uruchomienie ngrok
 https://gist.github.com/SalahHamza/799cac56b8c2cd20e6bfeb8886f18455
 
 in case you don't have unzip installed, you can do that like this
@@ -76,6 +79,14 @@ $ unzip ngrok-stable-linux-amd64.zip
 $ ./ngrok version
 ngrok version 2.3.40
 
+
+dodajemy token (token pobieramy ze strony): https://dashboard.ngrok.com/get-started/your-authtoken
+$ ./ngrok authtoken 2G0CCcJUPnOErUyrnN1aHAmRiq3_5E2ZKp6oeVSoFka5nXz1E
+Authtoken saved to configuration file: /root/.ngrok2/ngrok.yml
+
+
+
+-----------------> podłączamy się pod aplikację (Spring boota)
 all you need to do is specify a port where your website is servered so that you expose it to the internet. Example
 ./ngrok http 8000
 passing the above command will produce this output
@@ -109,6 +120,28 @@ czyli trzeba uruchomić moją aplikację Springbootową na porcie 8000:
 http://localhost:8000
 
 
+--------------------->  podłączanie się do bazy
+możemy też uruchomić bazę:
+./ngrok tcp 3306
+
+ngrok by @inconshreveable                                                                                                                                 (Ctrl+C to quit)
+
+Session Status                online
+Account                       j4sysiak@gmail.com (Plan: Free)
+Version                       2.3.40
+Region                        United States (us)
+Web Interface                 http://127.0.0.1:4040
+Forwarding                    tcp://8.tcp.ngrok.io:15408 -> localhost:3306
+
+Connections                   ttl     opn     rt1     rt5     p50     p90
+                              0       0       0.00    0.00    0.00    0.00
+
+
+teraz korzystając z jakiegoś klienta sql podpinamy się pod tą bazę:
+host:  8.tcp.ngrok.io
+port:  15408
+login: root
+hasło: test1234
 
 ----------------------------  testy
 ssh ip172-18-0-13-cd33k8n91rrg00djegrg@direct.labs.play-with-docker.com
